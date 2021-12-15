@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+.App-container {
+  padding: 5px 20px;
+}
+.App-container fieldset {
+  margin: 20px 0;
+}
+
+.app  input.error {
+  border: 1px solid red;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -15,9 +26,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
