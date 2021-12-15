@@ -6,7 +6,7 @@ function App() {
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
   const [gender, setGender] = useState('');
-  const [fruit, setFruit] = useState([]);
+  const [fruit, setFruit] = useState(''); //select error if ([]) is used for useState
   const [checked, setChecked] = useState('');
   const [comments, setComments] = useState('Enter your comments here!');
   const [color, setBackgroundColor] = useState('');
@@ -20,19 +20,15 @@ function App() {
     setLastName(e.target.value)
   }
 
-  const handleMaleGender = e => {
-    setGender("male");
-  }
-  const handleFemaleGender = e => {
-    setGender("female");
+  
+  const handleGender = e => {
+    setGender(e.target.value);
   }
 
-  const handleFalseCheckBox = e => {
-    setChecked("false");
+  const handleCheckBox = e => {
+    setChecked(e.target.value);
   }
-  const handleTrueCheckBox = e => {
-    setChecked("true");
-  }
+
   const handleFruit = e => {
     setFruit(e.target.value);
   }
@@ -52,7 +48,7 @@ function App() {
   //option values for the select tag
   let array = ["apple","banana","mango","strawberry"]
   let options = array.map( (item) =>
-      <option value = {item}>{item}</option> )
+      <option key={item} value={item}>{item}</option> )
 
   return (
     <div className="App" style={{backgroundColor: color}}>
@@ -88,18 +84,18 @@ function App() {
             <input
               type="radio"
               name="gender"
-              value={gender}
-              checked={gender === "male"}
-              onClick={handleMaleGender}
+              value="male"
+              checked={gender === 'male'} 
+              onChange={handleGender}
             /> Male
             </label>
             <label> &nbsp;
             <input
               type="radio"
               name="gender"
-              value={gender}
-              checked={gender === "female"}
-              onClick={handleFemaleGender}
+              value="female"
+              checked={gender === 'female'} 
+              onChange={handleGender}
             /> Female
             </label>
           </fieldset>
@@ -108,6 +104,7 @@ function App() {
             <select 
               value={fruit}
               onChange={handleFruit}
+              multiple={false}
               >
                 {options}
             {/* <option selected value="apple">apple</option>
@@ -122,16 +119,15 @@ function App() {
             <input 
               type="checkbox"
               name="checked"
-              value={checked}
-              checked={checked === "true"}
-              onClick={handleTrueCheckBox}
+              value="true"
+              onClick={handleCheckBox}
             />&nbsp;True &nbsp;
              <input 
               type="checkbox"
               name="checked"
-              value={checked}
-              checked={checked === "false"}
-              onClick={handleFalseCheckBox}
+              value="false"
+              // checked={checked === "false"}
+              onClick={handleCheckBox}
             />&nbsp;False
             </label>
           </fieldset>
